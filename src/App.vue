@@ -19,6 +19,7 @@ export default {
     mounted(){
       document.getElementById('app').className = 'container-fluid bg-white row min-vh-100 '
     },
+    
 }
 </script>
 
