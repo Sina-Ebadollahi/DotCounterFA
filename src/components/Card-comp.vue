@@ -2,7 +2,7 @@
     <div class="col-6  align-items-center">
         <div class="container-fluid row border border-2">
             <div class="container">
-                <h1 class="display-2 text-center">شمارنده نقاطه هر جمله</h1>
+                <h1 class="display-2 text-center">{{ headerData }}</h1>
             </div>
             <h1 class="display-6 text-center fw-bold " v-if="dotsCount != 0">{{ dotsCount }} : تعداد نقاط </h1>
         <div class="container border border-dark fw-bold h3">
@@ -41,7 +41,11 @@ const chars = {
             return{
                 inpVal : "",
                 dotsCount: 0,
+                headerData: "شمارنده نقاط هر جمله"
             }
+        },
+        updated(){
+            this.lang == 'En' ? this.headerData = "counter of any sentence" : this.headerData = "شمارنده نقاط هر جمله";
         },
         methods:{
             changeInpVal(e){
@@ -63,8 +67,14 @@ const chars = {
                         }
                     }
                 }
-            }
+            },
+            
         },
+        props:{
+            appTheme: String,
+            lang:String
+            
+        }
 
     }
 </script>

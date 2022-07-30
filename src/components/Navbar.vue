@@ -7,8 +7,8 @@
                         Language | زبان
                     </button>
                     <ul class="dropdown-menu bg-info text-light" aria-labelledby="dropdownMenuButton1">
-                        <li class="ms-1">English</li>
-                        <li class="text-end me-1">فارسی</li>
+                        <li @click="changeLang('En')" class="ms-1" style="cursor: pointer;">English</li>
+                        <li @click="changeLang('Fa')" class="text-end" style="cursor: pointer; ">فارسی</li>
                     </ul>
                 </div>
             </div>
@@ -23,20 +23,29 @@
 export default{
     data(){
         return{
-            theme: 'Light'
+            
         }
     },
     methods:{
         changeTheme(e){
-            this.theme == 'Light' ? this.theme = 'Dark' : this.theme = "Light";
+            this.appTheme == 'Light' ? this.themeChanger('Dark') : this.themeChanger('Light') ;
         },
         checkTheme(){
-            if(this.theme == 'Light'){
+            if(this.appTheme == 'Light'){
                 return 'https://repository-images.githubusercontent.com/463612134/d106e3cd-9f44-4b5f-af09-8a703b0427a5'
-            }else if(this.theme == 'Dark'){
+            }else if(this.appTheme == 'Dark'){
                 return 'https://i.ibb.co/bmbHzxg/t.png'
             }
+            
         }
+    },
+    props:{
+        appTheme: String,
+        themeChanger: {
+            type: Function,
+            
+        },
+        changeLang: Function
     }
     
 }
