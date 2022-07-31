@@ -69,7 +69,9 @@ const chars = {
                 }
             },
             
+            
         },
+        
         props:{
             appTheme: String,
             lang:String

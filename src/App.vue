@@ -3,7 +3,7 @@
   <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   <section :class="bg">
     <Navbar :appTheme="theme" :themeChanger="themeChanger" :changeLang="changeLang" />
-  <CardComp :appTheme="theme"  />
+  <CardComp :appTheme="theme" :lang="lang"  />
   </section>
 </template>
 
@@ -14,7 +14,7 @@ export default {
   data(){
     return{
       theme:'Light',
-      bg: "container-fluid  row min-vh-100 bg-dark",
+      bg: "container-fluid  row min-vh-100 bg-white",
       lang: "Fa"
     }
   },
@@ -30,10 +30,10 @@ export default {
       },
       checkBackground(){
         if(this.theme == "Dark"){
-        this.bg = "container-fluid  row min-vh-100 bg-white"
+        this.bg = "container-fluid  row min-vh-100 bg-dark"
       }
       else if(this.theme == "Light"){
-        this.bg = "container-fluid row min-vh-100 bg-dark"
+        this.bg = "container-fluid row min-vh-100 bg-white"
       }
       
       },

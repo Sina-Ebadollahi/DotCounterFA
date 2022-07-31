@@ -32,9 +32,9 @@ export default{
         },
         checkTheme(){
             if(this.appTheme == 'Light'){
-                return 'https://repository-images.githubusercontent.com/463612134/d106e3cd-9f44-4b5f-af09-8a703b0427a5'
-            }else if(this.appTheme == 'Dark'){
                 return 'https://i.ibb.co/bmbHzxg/t.png'
+            }else if(this.appTheme == 'Dark'){
+                return 'https://repository-images.githubusercontent.com/463612134/d106e3cd-9f44-4b5f-af09-8a703b0427a5'
             }
             
         }
