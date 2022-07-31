@@ -1,12 +1,13 @@
 <template>
-    <div class="col-6  align-items-center">
-        <div class="container-fluid row border border-2">
-            <div class="container">
-                <h1 class="display-2 text-center">{{ headerData }}</h1>
+    <div class="col-sm-6 justify-content-center  align-items-center">
+        <div class="container-fluid row border border-2 bg-info" style="border-radius: 15px;">
+            <div class="container my-3">
+                <h1 :class="'display-3 text-center ' + textColor">{{ headerData }}</h1>
             </div>
-            <h1 class="display-6 text-center fw-bold " v-if="dotsCount != 0">{{ dotsCount }} : تعداد نقاط </h1>
-        <div class="container border border-dark fw-bold h3">
-            <input class=" w-100 border-0 text-end" @input="changeInpVal"  type="text" name="" id="" >
+            <h1 :class="'display-6 text-center fw-bold '  + textColor " v-if="dotsCount != 0">{{ dotsCount }}{{ dotInfo }}</h1>
+        <div class="container border border-dark row fw-bold h3 my-3 py-2    ">
+            <input class="border-0 col-sm-8 text-end py-1" @input="changeInpVal"  type="text" name="" id="" >
+            <h4 :class="'h4 fw-italic col-sm-4 text-end ' + textColor">{{ inputLabel }}</h4>
         </div>
         </div>
     </div>
@@ -41,11 +42,17 @@ const chars = {
             return{
                 inpVal : "",
                 dotsCount: 0,
-                headerData: "شمارنده نقاط هر جمله"
+                headerData: "شمارنده نقاط در متن",
+                inputLabel: " : متن را وارد نمایید",
+                textColor: "text-dark",
+                dotInfo: " : تعداد نقاط در متن"
             }
         },
+        
         updated(){
-            this.lang == 'En' ? this.headerData = "counter of any sentence" : this.headerData = "شمارنده نقاط هر جمله";
+            this.lang == 'En' ? this.headerData = "Persian Dot Counter" : this.headerData = "شمارنده نقاط در متن";
+            this.lang == 'En' ? this.dotInfo = "Dot Count : " : this.dotInfo = " : تعداد نقاط در متن";
+            this.appTheme == "Light" ? this.textColor = "text-dark" : this.textColor = "text-white";
         },
         methods:{
             changeInpVal(e){
