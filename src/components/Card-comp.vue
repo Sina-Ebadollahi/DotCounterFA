@@ -1,13 +1,15 @@
 <template>
     <div class="col-sm-6 justify-content-center  align-items-center">
-        <div class="container-fluid row border border-2 bg-info" style="border-radius: 15px;">
+        <div class="container-fluid row border border-2 bg-warning" style="border-radius: 15px;">
             <div class="container my-3">
                 <h1 :class="'display-3 text-center ' + textColor">{{ headerData }}</h1>
             </div>
-            <h1 :class="'display-6 text-center fw-bold '  + textColor " v-if="dotsCount != 0">{{ dotsCount }}{{ dotInfo }}</h1>
-        <div class="container border border-dark row fw-bold h3 my-3 py-2    ">
-            <input class="border-0 col-sm-8 text-end py-1" @input="changeInpVal"  type="text" name="" id="" >
-            <h4 :class="'h4 fw-italic col-sm-4 text-end ' + textColor">{{ inputLabel }}</h4>
+            <h1  :class="'display-6 text-center fw-bold '  + textColor " v-if="dotsCount != 0 && lang == 'En'">{{ dotInfo }}{{ dotsCount }}</h1>
+            <h1  :class="'display-6 text-center fw-bold '  + textColor " v-if="dotsCount != 0 && lang != 'En'">{{ dotsCount }}{{ dotInfo }}</h1>
+        <div class="container border border-dark row fw-bold h3 my-2 py-2 align-items-center   ">
+            <h4 v-if="lang == 'En'" :class="'h4 fw-italic col-md-4 text-start ' + textColor">{{ inputLabel }}</h4>
+            <input class="border-0 col-sm-8 text-end py-2 align-items-center" @input="changeInpVal"  type="text" name="" id="" >
+            <h4 v-if="lang != 'En'" :class="'h4 fw-italic col-md-4 text-end ' + textColor">{{ inputLabel }}</h4>
         </div>
         </div>
     </div>
@@ -52,7 +54,8 @@ const chars = {
         updated(){
             this.lang == 'En' ? this.headerData = "Persian Dot Counter" : this.headerData = "شمارنده نقاط در متن";
             this.lang == 'En' ? this.dotInfo = "Dot Count : " : this.dotInfo = " : تعداد نقاط در متن";
-            this.appTheme == "Light" ? this.textColor = "text-dark" : this.textColor = "text-white";
+            this.lang == 'En' ? this.inputLabel = "Enter Text : " : this.inputLabel = " : متن را وارد نمایید";
+            this.appTheme == "Light" ? this.textColor = "text-dark" : this.textColor = "text-dark";
         },
         methods:{
             changeInpVal(e){
